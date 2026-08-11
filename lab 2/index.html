@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CS302JSC - Lab 2</title>
+</head>
+<body>
+
+  <h1>CS302JSC — JavaScript</h1>
+  <h2>Syntax, Variables, Data Types &amp; Operators — Hands-On Lab</h2>
+  <p>BCA / BIT — Semester 5 | Dev Sanskriti Vishwavidyalaya</p>
+
+  <hr />
+
+  <h3>Objectives</h3>
+  <ul>
+    <li>Open and use the browser's developer console to run JavaScript directly.</li>
+    <li>Write and run a JavaScript file linked to an HTML page.</li>
+    <li>Declare and use variables correctly with var, let, and const.</li>
+    <li>Work confidently with all JavaScript data types and check them with typeof.</li>
+    <li>Apply arithmetic, assignment, comparison, and logical operators.</li>
+    <li>Independently spot and fix basic syntax and logic errors.</li>
+  </ul>
+
+  <hr />
+
+  <h3>Setup (10 min)</h3>
+  <p>Two ways to run JavaScript today — try both once, then use whichever you prefer for the exercises.</p>
+
+  <h4>Method A — Browser Console (fastest, no files needed)</h4>
+  <ol>
+    <li>Open Chrome (or any browser) to a blank tab.</li>
+    <li>Right-click anywhere → Inspect → click the Console tab. (Shortcut: F12, or Ctrl+Shift+J on Windows / Cmd+Option+J on Mac.)</li>
+    <li>Type console.log("Hello, JavaScript!"); and press Enter.</li>
+    <li>You should see Hello, JavaScript! printed below.</li>
+  </ol>
+
+  <h4>Method B — HTML + Script File (how real projects work)</h4>
+  <ol>
+    <li>Create a folder named js-lab1 on the Desktop.</li>
+    <li>Inside it, create two files: index.html and script.js.</li>
+    <li>Paste the HTML below into index.html.</li>
+    <li>In script.js, write: console.log("Hello from script.js!");</li>
+    <li>Double-click index.html to open it in the browser, then open the console (F12) — the message should appear there.</li>
+  </ol>
+
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;JS Lab 1&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Open the console to see output (F12)&lt;/h1&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+
+  <hr />
+
+  <h3>Part 1 — Syntax Warm-Up (10 min)</h3>
+  <p>Type each line into the console one at a time. Predict the output before pressing Enter.</p>
+  <pre>
+console.log("My name is [Your Name]");
+console.log(5 + 5);
+console.log("Comments don't run this part");
+  </pre>
+  <p><strong>Task 1.1:</strong> Deliberately break the syntax — remove the closing quote from a string and press Enter. Read the error message carefully, then fix it.</p>
+  <p><strong>Task 1.2 (pair discussion):</strong> Type console.log("test"). Now imagine you had instead written console.log("Test") somewhere expecting it to match a variable called test. Why would that fail? Discuss case sensitivity with a partner and write one sentence explaining it.</p>
+
+  <hr />
+
+  <h3>Part 2 — Variables (20 min)</h3>
+  <h4>Guided Example</h4>
+  <pre>
+let studentName = "Aditi";
+let studentAge = 20;
+const collegeName = "Dev Sanskriti Vishwavidyalaya";
+
+console.log(studentName, studentAge, collegeName);
+  </pre>
+  <p><strong>Task 2.1:</strong> Declare three let variables: your name, your roll number, and your course (BCA or BIT). Print all three in a single console.log.</p>
+  <p><strong>Task 2.2:</strong> Try reassigning collegeName to a different value. Write down the exact error message you get.</p>
+  <p><strong>Task 2.3 — Naming Practice:</strong> For each of the following, write "valid" or "invalid" and explain why:</p>
+  <pre>
+let 1stYear;
+let student_name;
+let let;
+let $marks;
+let roll no;
+  </pre>
+  <p><strong>Task 2.4 — Scope Challenge:</strong> Run the code below. One line works, one throws an error. In your lab record, explain why, in your own words.</p>
+  <pre>
+if (true) {
+  var a = "I am var";
+  let b = "I am let";
+}
+console.log(a);
+console.log(b);
+  </pre>
+
+  <hr />
+
+  <h3>Part 3 — Data Types (25 min)</h3>
+  <h4>Guided Example</h4>
+  <pre>
+let city = "Haridwar";
+let population = 300000;
+let isCapital = false;
+let mayor;
+let previousMayor = null;
+
+console.log(typeof city, typeof population, typeof isCapital, typeof mayor, typeof previousMayor);
+  </pre>
+  <p><strong>Task 3.1:</strong> Create one variable for each of the 7 primitive types (String, Number, Boolean, Undefined, Null, BigInt, Symbol) and print each one together with its typeof result.</p>
+  <p><strong>Task 3.2 — Object &amp; Array:</strong> Run the code below, then modify it: add a 4th subject to the array and print it. Add an isPassing property to the student object and print it.</p>
+  <pre>
+const student = {
+  name: "Rohit",
+  rollNo: 21,
+  course: "BCA"
+};
+console.log(student.name);
+
+const subjects = ["JavaScript", "DBMS", "Networking"];
+console.log(subjects[0], subjects[2]);
+  </pre>
+  <p><strong>Task 3.3 — The typeof null Trick:</strong> Predict typeof null before running it. Were you right? Write one sentence explaining why it behaves this way.</p>
+
+  <hr />
+
+  <h3>Part 4 — Operators &amp; Expressions (25 min)</h3>
+  <h4>Guided Example</h4>
+  <pre>
+let cartTotal = 500;
+cartTotal += 150;
+cartTotal -= 50;
+console.log(cartTotal);
+
+let id = "42";
+console.log(id == 42, id === 42);
+  </pre>
+  <p><strong>Task 4.1 — Arithmetic:</strong> Pick two numbers and print their sum, difference, product, quotient, and remainder.</p>
+  <p><strong>Task 4.2 — == vs === Investigation:</strong> Run all six of the following and record true/false for each. Then explain in your own words why the == and === results differ for each pair.</p>
+  <pre>
+5 == "5"
+5 === "5"
+0 == false
+0 === false
+null == undefined
+null === undefined
+  </pre>
+  <p><strong>Task 4.3 — Logical Operators:</strong> Run the code below, then change the values of age and hasID until the first line prints false. Record the values you used.</p>
+  <pre>
+let age = 20;
+let hasID = true;
+console.log(age >= 18 && hasID);
+console.log(age >= 18 || hasID);
+console.log(!hasID);
+  </pre>
+  <p><strong>Task 4.4 — Ternary Operator:</strong> Write a ternary expression that stores "Pass" in a variable if a marks variable is >= 40, otherwise "Fail". Test it with two different values of marks.</p>
+
+  <hr />
+
+  <h3>Part 5 — Mini Project: Simple Grade Calculator (30 min)</h3>
+  <p>Combine everything from today into one program. Use Method B (HTML + script.js).</p>
+  <p><strong>Requirements:</strong></p>
+  <ul>
+    <li>Declare variables for a student's marks in 3 subjects (Numbers).</li>
+    <li>Calculate the total and the average using arithmetic operators.</li>
+    <li>Use a ternary operator (or nested ternaries) to decide a grade: average >= 90 → "A", average >= 75 → "B", average >= 40 → "C", else "F".</li>
+    <li>Use typeof to confirm your average variable is a Number.</li>
+    <li>Print a final summary line using string concatenation, e.g. "Total: 245, Average: 81.67, Grade: B".</li>
+  </ul>
+  <p><strong>Bonus:</strong> Add an isEligibleForScholarship Boolean using a logical AND of "average >= 85" and "attendance >= 75" (declare a sample attendance variable too).</p>
+
+  <hr />
+
+  <h3>Part 6 — Debugging Practice (10 min)</h3>
+  <p>Fix these 4 broken snippets. In your lab record, write the corrected code and note what error each one caused.</p>
+
+  <p><strong>Snippet 1</strong></p>
+  <pre>
+let total = 10 +
+console.log(total);
+  </pre>
+
+  <p><strong>Snippet 2</strong></p>
+  <pre>
+const rate = 5;
+rate = 10;
+  </pre>
+
+  <p><strong>Snippet 3</strong></p>
+  <pre>
+console.log(username);
+let username = "admin";
+  </pre>
+
+  <p><strong>Snippet 4</strong></p>
+  <pre>
+let 2ndAttempt = "retry";
+  </pre>
+
+  <hr />
+
+  <h3>Lab Record / Submission Checklist</h3>
+  <p>Each student submits a lab record (handwritten or typed) containing:</p>
+  <ul>
+    <li>Predicted vs. actual output for Parts 1–4 (screenshots or transcripts)</li>
+    <li>Grade Calculator code from Part 5, with one sample run's output</li>
+    <li>Corrected code + explanation for all 4 snippets in Part 6</li>
+    <li>One short paragraph: "What was the most confusing part of today's lab, and what helped it click?"</li>
+  </ul>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
